@@ -1,0 +1,36 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: jobtrack-db
+    environment:
+      POSTGRES_DB: jobtrack
+      POSTGRES_USER: jobtrack
+      POSTGRES_PASSWORD: jobtrack
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U jobtrack -d jobtrack"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build: .
+    container_name: jobtrack-app
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: jobtrack
+      DB_USER: jobtrack
+      DB_PASSWORD: jobtrack
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  postgres_data:
