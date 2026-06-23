@@ -1,0 +1,132 @@
+
+
+Table users {
+  user_id UUID [primary key]
+  last_name varchar(50)
+  first_name varchar(50)
+  last_name_kana varchar(50)
+  first_name_kana varchar(50)
+  email varchar(255) [unique]
+  phone varchar(20)
+  birth_date date
+  address text
+  desired_work_location varchar(255)
+  desired_salary integer
+  self_pr text
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table careers {
+  career_id uuid [pk]
+
+  user_id uuid [not null]
+
+  company_name varchar(255)
+  department_name varchar(255)
+  position varchar(255)
+
+  employment_type smallint
+
+  joined_at date
+  left_at date
+
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table projects {
+  project_id uuid [pk]
+
+  career_id uuid [not null]
+
+  project_name varchar
+  display_order smallint [not null]
+  role varchar(255)
+
+  team_size smallint
+
+  started_at date
+  ended_at date
+
+  description text
+
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table technologies {
+  technology_id uuid [pk]
+
+  name varchar [unique]
+
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table skills {
+  skill_id uuid [pk]
+
+  user_id uuid [not null]
+
+  technology_id uuid [not null]
+
+  proficiency_level smallint
+
+  experience_years decimal(4,1)
+
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table project_technologies {
+  project_id uuid
+  technology_id uuid
+
+  indexes {
+    (project_id, technology_id) [pk]
+  }
+}
+
+Table certifications {
+  certification_id uuid [pk]
+
+  user_id uuid [not null]
+
+  name varchar(255)
+
+  acquired_at date
+
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table educations {
+  education_id uuid [pk]
+
+  user_id uuid [not null]
+
+  school_name varchar(255)
+
+  faculty varchar(255)
+
+  enrolled_at date
+  graduated_at date
+
+  created_at timestamp
+  updated_at timestamp
+}
+
+Ref: careers.user_id > users.user_id
+
+Ref: projects.career_id > careers.career_id
+
+Ref: skills.user_id > users.user_id
+Ref: skills.technology_id > technologies.technology_id
+
+Ref: certifications.user_id > users.user_id
+
+Ref: educations.user_id > users.user_id
+
+Ref: project_technologies.project_id > projects.project_id
+Ref: project_technologies.technology_id > technologies.technology_id
