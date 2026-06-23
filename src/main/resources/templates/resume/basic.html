@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout/resume-layout :: layout(~{::section})}">
+<section th:fragment="section">
+    <div th:replace="~{fragments/resume-form :: sectionHeader('01', '基本情報', '氏名・連絡先など基本的な情報を入力してください')}"></div>
+
+    <div class="form-grid form-grid-2">
+        <div class="field">
+            <label class="field-label">姓<span class="required">必須</span></label>
+            <input class="input" type="text" name="lastName" placeholder="山田">
+        </div>
+        <div class="field">
+            <label class="field-label">名<span class="required">必須</span></label>
+            <input class="input" type="text" name="firstName" placeholder="太郎">
+        </div>
+        <div class="field">
+            <label class="field-label">姓（フリガナ）</label>
+            <input class="input" type="text" name="lastNameKana" placeholder="ヤマダ">
+        </div>
+        <div class="field">
+            <label class="field-label">名（フリガナ）</label>
+            <input class="input" type="text" name="firstNameKana" placeholder="タロウ">
+        </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="form-grid form-grid-2">
+        <div class="field">
+            <label class="field-label">メールアドレス<span class="required">必須</span></label>
+            <input class="input" type="email" name="email" placeholder="taro.yamada@example.com">
+        </div>
+        <div class="field">
+            <label class="field-label">電話番号</label>
+            <input class="input" type="tel" name="phone" placeholder="090-1234-5678">
+        </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="form-grid form-grid-3">
+        <div class="field">
+            <label class="field-label">生年月日（年）</label>
+            <select class="select" name="birthYear">
+                <option value="">選択</option>
+                <option th:each="y, yStat : ${years}" th:if="${yStat.index >= 10}" th:value="${y}" th:text="${y} + '年'">1984年</option>
+            </select>
+        </div>
+        <div class="field">
+            <label class="field-label">月</label>
+            <select class="select" name="birthMonth">
+                <option value="">選択</option>
+                <option th:each="m : ${months}" th:value="${m}" th:text="${m} + '月'">01月</option>
+            </select>
+        </div>
+        <div class="field">
+            <label class="field-label">日</label>
+            <select class="select" name="birthDay">
+                <option value="">選択</option>
+                <option th:each="d : ${days}" th:value="${d}" th:text="${d} + '日'">01日</option>
+            </select>
+        </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="field">
+        <label class="field-label">現住所</label>
+        <input class="input" type="text" name="address" placeholder="東京都渋谷区...">
+    </div>
+    <div class="field" style="margin-top: 1rem;">
+        <label class="field-label">希望勤務地</label>
+        <input class="input" type="text" name="preferredLocation" placeholder="東京都内、リモート可">
+    </div>
+    <div class="field" style="margin-top: 1rem;">
+        <label class="field-label">希望年収（万円）</label>
+        <div class="input-with-suffix">
+            <input class="input" type="text" name="desiredSalary" placeholder="600">
+            <span class="suffix">万円〜</span>
+        </div>
+    </div>
+</section>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="saveBar" class="save-bar">
+    <button type="button" class="btn btn-primary btn-save">このセクションを保存</button>
+</div>
+
+<div th:fragment="sectionHeader (num, title, subtitle)" class="section-header">
+    <span class="section-num" th:text="${num}">01</span>
+    <div>
+        <h2 class="section-title" th:text="${title}">タイトル</h2>
+        <p class="section-subtitle" th:if="${subtitle}" th:text="${subtitle}">サブタイトル</p>
+    </div>
+</div>
+
+<div th:fragment="periodPicker(prefix)" class="period-picker">
+    <div class="period-group">
+        <select class="select" th:name="${prefix} + 'StartYear'">
+            <option value="">年</option>
+            <option th:each="y : ${years}" th:value="${y}" th:text="${y}">2024</option>
+        </select>
+        <span class="period-unit">年</span>
+        <select class="select" th:name="${prefix} + 'StartMonth'">
+            <option value="">月</option>
+            <option th:each="m : ${months}" th:value="${m}" th:text="${m}">01</option>
+        </select>
+        <span class="period-unit">月</span>
+    </div>
+    <span class="period-sep">〜</span>
+    <div class="period-group">
+        <select class="select" th:name="${prefix} + 'EndYear'">
+            <option value="">年</option>
+            <option th:each="y : ${years}" th:value="${y}" th:text="${y}">2024</option>
+        </select>
+        <span class="period-unit">年</span>
+        <select class="select" th:name="${prefix} + 'EndMonth'">
+            <option value="">月</option>
+            <option th:each="m : ${months}" th:value="${m}" th:text="${m}">01</option>
+        </select>
+        <span class="period-unit">月</span>
+    </div>
+    <label class="checkbox-label">
+        <input type="checkbox" th:name="${prefix} + 'IsCurrent'">
+        現在
+    </label>
+</div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org"
+      th:fragment="layout(content)">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>職務経歴書</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono&family=Noto+Sans+JP:wght@400;500;600&family=Noto+Serif+JP:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/resume.css}">
+</head>
+<body>
+<div class="app">
+    <header class="header" th:replace="~{fragments/resume-header :: header}"></header>
+
+    <div class="container">
+        <aside class="sidebar" th:replace="~{fragments/resume-sidebar :: sidebar}"></aside>
+
+        <main class="main">
+            <div class="content-card">
+                <div th:replace="${content}"></div>
+                <div th:replace="~{fragments/resume-form :: saveBar}"></div>
+            </div>
+            <nav class="mobile-tabs" th:replace="~{fragments/resume-sidebar :: mobileTabs}"></nav>
+        </main>
+    </div>
+    <div class="spacer-bottom"></div>
+</div>
+<script th:src="@{/js/resume-ui.js}"></script>
+</body>
+</html>

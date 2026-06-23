@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout/resume-layout :: layout(~{::section})}">
+<section th:fragment="section">
+    <div th:replace="~{fragments/resume-form :: sectionHeader('03', 'スキル', '保有スキルを追加し、習熟度・経験年数を設定してください')}"></div>
+
+    <div class="skills-add-row">
+        <input class="input" type="text" placeholder="スキル名を入力（Enterで追加）">
+        <button type="button" class="btn btn-primary">追加</button>
+    </div>
+
+    <div class="suggested-skills">
+        <button type="button" class="btn-chip btn-chip-mono">+ JavaScript</button>
+        <button type="button" class="btn-chip btn-chip-mono">+ TypeScript</button>
+        <button type="button" class="btn-chip btn-chip-mono">+ React</button>
+        <button type="button" class="btn-chip btn-chip-mono">+ Python</button>
+        <button type="button" class="btn-chip btn-chip-mono">+ SQL</button>
+        <button type="button" class="btn-chip btn-chip-mono">+ AWS</button>
+        <button type="button" class="btn-chip btn-chip-mono">+ Docker</button>
+        <button type="button" class="btn-chip btn-chip-mono">+ Git</button>
+        <button type="button" class="btn-chip btn-chip-mono">+ Java</button>
+        <button type="button" class="btn-chip btn-chip-mono">+ Figma</button>
+    </div>
+
+    <div style="margin-top: 1.5rem;">
+        <div class="skill-table-header">
+            <span>スキル名</span>
+            <span>習熟度</span>
+            <span>経験年数</span>
+            <span></span>
+        </div>
+        <div class="skill-row">
+            <span class="skill-name">Java</span>
+            <div class="level-buttons">
+                <button type="button" class="level-btn">1</button>
+                <button type="button" class="level-btn">2</button>
+                <button type="button" class="level-btn active">3</button>
+                <button type="button" class="level-btn">4</button>
+                <button type="button" class="level-btn">5</button>
+            </div>
+            <div class="skill-years">
+                <select class="select">
+                    <option>0.5年</option>
+                    <option>1年</option>
+                    <option>1.5年</option>
+                    <option>2年</option>
+                    <option selected>3年</option>
+                    <option>4年</option>
+                    <option>5年</option>
+                    <option>6年</option>
+                    <option>7年</option>
+                    <option>8年</option>
+                    <option>10年</option>
+                    <option>12年</option>
+                    <option>15年</option>
+                    <option>20以上年</option>
+                </select>
+            </div>
+            <button type="button" class="btn-icon">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+            </button>
+        </div>
+        <div class="skill-row">
+            <span class="skill-name">Spring Boot</span>
+            <div class="level-buttons">
+                <button type="button" class="level-btn">1</button>
+                <button type="button" class="level-btn">2</button>
+                <button type="button" class="level-btn active">3</button>
+                <button type="button" class="level-btn">4</button>
+                <button type="button" class="level-btn">5</button>
+            </div>
+            <div class="skill-years">
+                <select class="select">
+                    <option>0.5年</option>
+                    <option>1年</option>
+                    <option>1.5年</option>
+                    <option selected>2年</option>
+                    <option>3年</option>
+                    <option>4年</option>
+                    <option>5年</option>
+                    <option>6年</option>
+                    <option>7年</option>
+                    <option>8年</option>
+                    <option>10年</option>
+                    <option>12年</option>
+                    <option>15年</option>
+                    <option>20以上年</option>
+                </select>
+            </div>
+            <button type="button" class="btn-icon">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+            </button>
+        </div>
+    </div>
+
+    <div class="info-box">
+        <strong>習熟度の目安：</strong>
+        1=知識あり　2=補助的に使用　3=実務で使用可能　4=リードできる　5=エキスパート
+    </div>
+</section>
+</html>

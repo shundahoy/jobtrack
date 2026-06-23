@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout/resume-layout :: layout(~{::section})}">
+<section th:fragment="section">
+    <div th:replace="~{fragments/resume-form :: sectionHeader('02', '職歴', '会社ごとに職歴を入力し、各社でのプロジェクトを詳細登録してください')}"></div>
+
+    <div class="entry-card">
+        <div class="entry-header" data-toggle="work-body-1">
+            <div class="entry-header-left">
+                <div class="entry-icon">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 22v-4h6v4"/></svg>
+                </div>
+                <div>
+                    <div class="entry-badge">01 <span class="entry-title">（会社名未入力）</span></div>
+                    <p class="entry-meta">役職未入力 · プロジェクト 1件</p>
+                </div>
+            </div>
+            <svg class="chevron is-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+
+        <div id="work-body-1" class="entry-body collapsible-body">
+            <div class="form-grid form-grid-2">
+                <div class="field col-span-2">
+                    <label class="field-label">会社名<span class="required">必須</span></label>
+                    <input class="input" type="text" name="work[0].company" placeholder="株式会社〇〇">
+                </div>
+                <div class="field">
+                    <label class="field-label">部署名</label>
+                    <input class="input" type="text" name="work[0].department" placeholder="開発部">
+                </div>
+                <div class="field">
+                    <label class="field-label">役職・職位<span class="required">必須</span></label>
+                    <input class="input" type="text" name="work[0].position" placeholder="シニアエンジニア">
+                </div>
+                <div class="field col-span-2">
+                    <label class="field-label">雇用形態</label>
+                    <select class="select" name="work[0].employmentType">
+                        <option value="">選択してください</option>
+                        <option>正社員</option>
+                        <option>契約社員</option>
+                        <option>業務委託</option>
+                        <option>派遣社員</option>
+                        <option>アルバイト・パート</option>
+                        <option>インターン</option>
+                    </select>
+                </div>
+                <div class="field col-span-2">
+                    <label class="field-label">在籍期間<span class="required">必須</span></label>
+                    <div th:replace="~{fragments/resume-form :: periodPicker('work[0].')}"></div>
+                </div>
+            </div>
+
+            <div>
+                <div class="projects-header">
+                    <h4 class="projects-title">担当プロジェクト</h4>
+                    <span class="projects-count">1件</span>
+                </div>
+                <div class="projects-list">
+                    <div class="project-card">
+                        <div class="project-header" data-toggle="project-body-1">
+                            <div class="project-header-left">
+                                <span class="project-badge">PJ-01</span>
+                                <span class="project-name">（プロジェクト名未入力）</span>
+                            </div>
+                            <svg class="chevron is-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                        </div>
+                        <div id="project-body-1" class="project-body collapsible-body">
+                            <div class="form-grid form-grid-2">
+                                <div class="field col-span-2">
+                                    <label class="field-label">プロジェクト名<span class="required">必須</span></label>
+                                    <input class="input" type="text" name="work[0].projects[0].name" placeholder="〇〇サービス リニューアル開発">
+                                </div>
+                                <div class="field">
+                                    <label class="field-label">担当役割</label>
+                                    <select class="select" name="work[0].projects[0].role">
+                                        <option value="">選択してください</option>
+                                        <option>プロジェクトマネージャー</option>
+                                        <option>テックリード</option>
+                                        <option>バックエンドエンジニア</option>
+                                        <option>フロントエンドエンジニア</option>
+                                        <option>フルスタックエンジニア</option>
+                                        <option>インフラエンジニア</option>
+                                        <option>モバイルエンジニア</option>
+                                        <option>データエンジニア</option>
+                                        <option>MLエンジニア</option>
+                                        <option>デザイナー</option>
+                                        <option>QAエンジニア</option>
+                                        <option>その他</option>
+                                    </select>
+                                </div>
+                                <div class="field">
+                                    <label class="field-label">チーム規模</label>
+                                    <select class="select" name="work[0].projects[0].teamSize">
+                                        <option value="">選択してください</option>
+                                        <option>1人（個人）</option>
+                                        <option>2〜5人</option>
+                                        <option>6〜10人</option>
+                                        <option>11〜20人</option>
+                                        <option>21〜50人</option>
+                                        <option>50人以上</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label class="field-label">プロジェクト期間</label>
+                                <div th:replace="~{fragments/resume-form :: periodPicker('work[0].projects[0].')}"></div>
+                            </div>
+                            <div class="field">
+                                <label class="field-label">使用技術・ツール</label>
+                                <div class="tag-input-row">
+                                    <input class="input input-mono" type="text" placeholder="技術名を入力（Enterで追加）">
+                                    <button type="button" class="btn btn-secondary">追加</button>
+                                </div>
+                                <div class="tag-list">
+                                    <span class="tag">Java <button type="button" class="btn-icon" data-no-toggle>×</button></span>
+                                    <span class="tag">Spring Boot <button type="button" class="btn-icon" data-no-toggle>×</button></span>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label class="field-label">業務内容・実績</label>
+                                <textarea class="textarea" name="work[0].projects[0].description" rows="5"
+                                          placeholder="・担当した機能や業務の概要&#10;・採用した技術的アプローチと理由&#10;・定量的な成果（レイテンシ改善率、売上貢献など）"></textarea>
+                                <p class="char-count">0 文字</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="btn-dashed btn-dashed-sm" style="margin-top: 0.75rem;">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    プロジェクトを追加
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <button type="button" class="btn-dashed">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        会社を追加する
+    </button>
+</section>
+</html>

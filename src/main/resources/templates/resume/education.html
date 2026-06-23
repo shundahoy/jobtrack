@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout/resume-layout :: layout(~{::section})}">
+<section th:fragment="section">
+    <div th:replace="~{fragments/resume-form :: sectionHeader('04', '学歴', '最終学歴から順に入力してください')}"></div>
+
+    <div class="edu-card">
+        <div class="card-top">
+            <span class="entry-badge">学歴 01</span>
+        </div>
+        <div class="form-grid form-grid-2">
+            <div class="field col-span-2">
+                <label class="field-label">学校名<span class="required">必須</span></label>
+                <input class="input" type="text" name="education[0].school" placeholder="〇〇大学">
+            </div>
+            <div class="field">
+                <label class="field-label">学部・学科</label>
+                <input class="input" type="text" name="education[0].faculty" placeholder="工学部 情報工学科">
+            </div>
+            <div class="field">
+                <label class="field-label">学位</label>
+                <select class="select" name="education[0].degree">
+                    <option value="">選択してください</option>
+                    <option>学士（BA/BS）</option>
+                    <option>修士（MA/MS）</option>
+                    <option>博士（PhD）</option>
+                    <option>短期大学士</option>
+                    <option>専門士</option>
+                    <option>高等学校卒業</option>
+                    <option>その他</option>
+                </select>
+            </div>
+            <div class="field">
+                <label class="field-label">入学年</label>
+                <select class="select" name="education[0].startYear">
+                    <option value="">年</option>
+                    <option th:each="y : ${years}" th:value="${y}" th:text="${y} + '年'">2020年</option>
+                </select>
+            </div>
+            <div class="field">
+                <label class="field-label">卒業年</label>
+                <select class="select" name="education[0].endYear">
+                    <option value="">年</option>
+                    <option th:each="y : ${years}" th:value="${y}" th:text="${y} + '年'">2024年</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <button type="button" class="btn-dashed">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        学歴を追加する
+    </button>
+</section>
+</html>

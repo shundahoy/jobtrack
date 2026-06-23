@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<aside class="sidebar" th:fragment="sidebar">
+    <div class="sidebar-sticky">
+        <p class="sidebar-label">セクション</p>
+        <nav class="nav">
+            <a th:href="@{/resume/basic}" th:class="'nav-link' + (${activeSection == 'basic'} ? ' active' : '')">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                <span>基本情報</span><span class="nav-num">01</span>
+            </a>
+            <a th:href="@{/resume/work}" th:class="'nav-link' + (${activeSection == 'work'} ? ' active' : '')">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 22v-4h6v4"/></svg>
+                <span>職歴</span><span class="nav-num">02</span>
+            </a>
+            <a th:href="@{/resume/skills}" th:class="'nav-link' + (${activeSection == 'skills'} ? ' active' : '')">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                <span>スキル</span><span class="nav-num">03</span>
+            </a>
+            <a th:href="@{/resume/education}" th:class="'nav-link' + (${activeSection == 'education'} ? ' active' : '')">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                <span>学歴</span><span class="nav-num">04</span>
+            </a>
+            <a th:href="@{/resume/cert}" th:class="'nav-link' + (${activeSection == 'cert'} ? ' active' : '')">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+                <span>資格・免許</span><span class="nav-num">05</span>
+            </a>
+            <a th:href="@{/resume/pr}" th:class="'nav-link' + (${activeSection == 'pr'} ? ' active' : '')">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                <span>自己PR</span><span class="nav-num">06</span>
+            </a>
+        </nav>
+    </div>
+</aside>
+
+<nav class="mobile-tabs" th:fragment="mobileTabs">
+    <a th:href="@{/resume/basic}" th:class="'mobile-tab' + (${activeSection == 'basic'} ? ' active' : '')"><span class="mobile-tab-num">01</span>基本情報</a>
+    <a th:href="@{/resume/work}" th:class="'mobile-tab' + (${activeSection == 'work'} ? ' active' : '')"><span class="mobile-tab-num">02</span>職歴</a>
+    <a th:href="@{/resume/skills}" th:class="'mobile-tab' + (${activeSection == 'skills'} ? ' active' : '')"><span class="mobile-tab-num">03</span>スキル</a>
+    <a th:href="@{/resume/education}" th:class="'mobile-tab' + (${activeSection == 'education'} ? ' active' : '')"><span class="mobile-tab-num">04</span>学歴</a>
+    <a th:href="@{/resume/cert}" th:class="'mobile-tab' + (${activeSection == 'cert'} ? ' active' : '')"><span class="mobile-tab-num">05</span>資格・免許</a>
+    <a th:href="@{/resume/pr}" th:class="'mobile-tab' + (${activeSection == 'pr'} ? ' active' : '')"><span class="mobile-tab-num">06</span>自己PR</a>
+</nav>
+</body>
+</html>

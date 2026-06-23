@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout/resume-layout :: layout(~{::section})}">
+<section th:fragment="section">
+    <div th:replace="~{fragments/resume-form :: sectionHeader('06', '自己PR', 'あなたの強みや志向を採用担当者に伝えましょう')}"></div>
+
+    <div class="field">
+        <label class="field-label">自己PR文</label>
+        <textarea class="textarea" name="selfPr" rows="10" data-char-count="pr-count" data-max="800"
+                  placeholder="・これまでの経験で培ったスキルや強み&#10;・仕事への姿勢や大切にしている価値観&#10;・今後挑戦したいことや目指すキャリア"></textarea>
+        <div class="pr-hint-row">
+            <p class="pr-hint">採用担当者が最も重視するセクションです。具体的なエピソードを交えて記述することをお勧めします。</p>
+            <span id="pr-count" class="pr-count">0 / 800</span>
+        </div>
+    </div>
+
+    <div class="field" style="margin-top: 1.5rem;">
+        <label class="field-label">強み・キーワード（任意）</label>
+        <input class="input" type="text" name="keywords" placeholder="例：リーダーシップ、問題解決、チームワーク">
+        <p style="margin-top: 0.25rem; font-size: 0.75rem; color: var(--muted-foreground);">検索でヒットしやすくなります</p>
+    </div>
+</section>
+</html>
